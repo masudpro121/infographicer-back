@@ -7,7 +7,10 @@ const ProjectSchema = new mongoose.Schema({
             prompt : String,
             value: String
         }
-    ]
+    ],
+    user:  {
+        type: mongoose.Schema.Types.ObjectId, ref: 'User'
+    }
 })
 
 const ProjectModel = new mongoose.model('Project', ProjectSchema )

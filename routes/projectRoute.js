@@ -5,9 +5,10 @@ const ProjectRoute = express.Router()
 
 
 ProjectRoute.post('/add', (req, res)=>{
+    console.log(req.user, 'user');
     const {name, tag, prompts} = req.body
     const myModel = new ProjectModel({
-        name, tag,  prompts
+        name, tag,  prompts, user: req.user.id
     })
     myModel.save()
     .then(result=>{
@@ -15,7 +16,7 @@ ProjectRoute.post('/add', (req, res)=>{
     })
 })
 ProjectRoute.get('/all', (req, res)=>{
-    ProjectModel.find()
+    ProjectModel.find({user: req.user.id})
     .then(result=>{
         res.send(result)
     })

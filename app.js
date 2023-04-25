@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8000
 app.use(cors())
 app.use(express.json())
 
-app.use('/project', ProjectRoute)
+app.use('/project', whoIs, ProjectRoute)
 app.use('/auth', AuthRoute)
 
 app.listen(PORT, function () {
