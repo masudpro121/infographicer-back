@@ -1,12 +1,8 @@
 const mongoose = require('mongoose')
 const ProjectSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    tag: [],
-    projects : [
+    name: String,
+    tag: String,
+    prompts : [
         {
             prompt : String,
             value: String

@@ -6,6 +6,7 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const whoIs = require('./middleware/whoIs');
 const AuthRoute = require('./routes/authRoute');
+const ProjectRoute = require('./routes/projectRoute');
 
 // const UserRoute = require('./Routes/UserRoute/UserRoute');
 // const whoIs = require('./Middleware/whois');
@@ -15,7 +16,7 @@ const PORT = process.env.PORT || 8000
 app.use(cors())
 app.use(express.json())
 
-// app.use('/user', whoIs, UserRoute)
+app.use('/project', ProjectRoute)
 app.use('/auth', AuthRoute)
 
 app.listen(PORT, function () {

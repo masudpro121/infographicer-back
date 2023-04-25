@@ -8,6 +8,8 @@ const controlSignin = (req, res)=>{
   if(email) {
       myQuery.email = email
   } 
+
+  // ==================  Signin =============
   UserModel.findOne(myQuery)
   .then(user=>{
     const {email, passwordHash} = user
@@ -60,7 +62,17 @@ const controlSignup = (req, res)=>{
 
 
 
+// ==================  Validate =============
+const validate = (req, res) => {
+    try{
+      const token = req.headers.token
+      if(token){
+          const decoded = jwt.verify(token, process.env.JWT_PRIVATE)
+          res.send({status:'ok', data: decoded})
+      }
+    }catch(err){
+      res.sendStatus(400)
+    }
+}
 
-
-
-module.exports = {controlSignin, controlSignup}
+module.exports = {controlSignin, controlSignup, validate}
