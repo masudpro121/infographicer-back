@@ -18,7 +18,9 @@ app.use(express.json())
 
 app.use('/project', whoIs, ProjectRoute)
 app.use('/auth', AuthRoute)
-
+app.get('/', (req, res)=>{
+    res.send('Infographicer')
+})
 app.listen(PORT, function () {
     console.log("Listening on port "+PORT);
 });
